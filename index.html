@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span id="S"></span>
+<span id="P"></span>
+<canvas id="myCans" width="1000px" height="300px" style="border: 1px solid chartreuse;">
+    <script>
+        function Rectangle(length, width) {
+            this.length = length;
+            this.width = width;
+            this.calArea = function () {
+                return this.length * this.width;
+            }
+            this.calPerimeter = function () {
+                return (this.length + this.width) * 2;
+            }
+            this.canvas = function () {
+                var c = document.getElementById("myCans");
+                var ctx = c.getContext("2d");
+                ctx.fillStyle = "#95ddff";
+                ctx.fillRect(0, 0, this.length, this.width);
+            }
+        }
+
+        let myRec = new Rectangle(150, 100);
+        document.getElementById("S").innerHTML = myRec.calArea() + "<br/>";
+        document.getElementById("P").innerHTML = myRec.calPerimeter() + "<br/>";
+        myRec.canvas();
+
+    </script>
+</body>
+</html>
